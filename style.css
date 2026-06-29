@@ -1,0 +1,7 @@
+.print-labels { font-family: Arial; padding: 20px; }
+
+@media print {
+    nav { display: none; }
+    #home { display: none; }
+    .print-labels { display: block; }
+}
