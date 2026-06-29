@@ -1,1 +1,29 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('reports')">Reports</button>
+    </nav>
+
+    <div id="home"><h1>Welcome to Medical Portal</h1></div>
+    
+    <div id="reports" style="display:none;">
+        <div class="print-labels">
+            <p>Hemoglobin: 7.0 g/dl</p>
+            <p>Creatinine: 1.7 mg/dl</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.getElementById('home').style.display = (id === 'home') ? 'block' : 'none';
+            document.getElementById('reports').style.display = (id === 'reports') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
