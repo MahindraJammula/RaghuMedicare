@@ -1,29 +1,39 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
+    <title>Raghu Medicare - Professional Medical Care</title>
 </head>
 <body>
-    <nav>
-        <button onclick="showSection('home')">Home</button>
-        <button onclick="showSection('reports')">Reports</button>
+
+    <nav class="navbar">
+        <div class="logo">RAGHU MEDICARE</div>
+        <div class="nav-links">
+            <button onclick="showSection('home')">Home</button>
+            <button onclick="showSection('reports')">Reports</button>
+        </div>
     </nav>
 
-    <div id="home"><h1>Welcome to Medical Portal</h1></div>
-    
-    <div id="reports" style="display:none;">
+    <section id="home" class="hero">
+        <h1>Welcome to Raghu Medicare</h1>
+        <p>Comprehensive Diagnostic & Consultation Services</p>
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" alt="Doctor Consultation" class="hero-img">
+    </section>
+
+    <section id="reports" style="display:none;" class="report-section">
+        <h2>Patient Reports</h2>
         <div class="print-labels">
-            <p>Hemoglobin: 7.0 g/dl</p>
-            <p>Creatinine: 1.7 mg/dl</p>
+            <p><strong>Hemoglobin:</strong> 7.0 g/dl</p>
+            <p><strong>C-Reactive Protein:</strong> 35.6 mg/l</p>
         </div>
-    </div>
+    </section>
 
     <script>
         function showSection(id) {
-            document.getElementById('home').style.display = (id === 'home') ? 'block' : 'none';
+            document.getElementById('home').style.display = (id === 'home') ? 'flex' : 'none';
             document.getElementById('reports').style.display = (id === 'reports') ? 'block' : 'none';
         }
     </script>
 </body>
 </html>
+
