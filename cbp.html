@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <title>Comprehensive Lab Report</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .report-section { margin-bottom: 25px; }
+        body { font-family: 'Arial', sans-serif; margin: 20px; background-color: #f8f9fa; }
+        .report-section { margin-bottom: 25px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
         /* Grid Layout */
-        .grid-table { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border: 1px solid #ccc; margin-top: 10px; }
-        .grid-header { display: contents; font-weight: bold; background: #f4f4f4; }
-        .grid-row { display: contents; }
-        .grid-item { padding: 8px; border-bottom: 1px solid #eee; border-right: 1px solid #eee; }
+        .grid-table { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border-top: 1px solid #000; border-left: 1px solid #000; margin-top: 10px; }
+        .urine-serology-grid { grid-template-columns: 2fr 1fr; } /* Urine/Serology కోసం 2 కాలమ్స్ */
         
-        input[type="text"] { width: 85%; padding: 4px; border: 1px solid #999; border-radius: 4px; }
+        .grid-header { display: contents; font-weight: bold; background: #e9ecef; }
+        .grid-row { display: contents; }
+        .grid-item { padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; }
+        
+        input[type="text"] { width: 90%; border: 1px solid #ccc; padding: 5px; border-radius: 3px; }
         
         .hidden { display: none !important; }
         .row-empty { display: none !important; }
 
         @media print {
             .no-print { display: none !important; }
-            input[type="text"] { border: none !important; background: transparent !important; font-weight: bold; padding: 0; }
-            .grid-table { border: 1px solid #000 !important; }
+            input[type="text"] { border: none !important; background: transparent !important; font-weight: bold; }
+            .grid-table { border: 1px solid #000; }
         }
-        button { margin-bottom: 5px; cursor: pointer; padding: 5px 8px; margin-right: 5px; font-size: 11px; }
+        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; background: #0056b3; color: white; border: none; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <div class="no-print">
-        <button onclick="window.location.href='index.html'">Back to Home</button>
+        <button onclick="window.history.back()">Back to Home</button>
         <button onclick="printReport()">Print Report</button>
         <hr>
         <button onclick="toggleSection('hematology')">Toggle Hematology</button>
         <button onclick="toggleSection('urine')">Toggle Urine</button>
-        <button onclick="toggleSection('serology')">Toggle Serology/Bio</button>
+        <button onclick="toggleSection('serology')">Toggle Serology</button>
     </div>
 
     <div id="hematology" class="report-section">
-        <h3>Hematology</h3>
-        <div class="grid-table" id="table_hematology">
+        <h3>Complete Blood Picture (CBP)</h3>
+        <div class="grid-table">
             <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div><div class="grid-item">Ref Range</div><div class="grid-item">Unit</div></div>
             <div class="grid-row"><div class="grid-item">Hemoglobin</div><div class="grid-item"><input type="text"></div><div class="grid-item">11.5–17.3</div><div class="grid-item">g/dl</div></div>
             <div class="grid-row"><div class="grid-item">T.W.B.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">5000–11000</div><div class="grid-item">-</div></div>
@@ -60,7 +62,7 @@
 
     <div id="urine" class="report-section">
         <h3>Urine Analysis</h3>
-        <div class="grid-table" id="table_urine" style="grid-template-columns: 2fr 2fr;">
+        <div class="grid-table urine-serology-grid">
             <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
             <div class="grid-row"><div class="grid-item">Sugar</div><div class="grid-item"><input type="text"></div></div>
             <div class="grid-row"><div class="grid-item">Albumin</div><div class="grid-item"><input type="text"></div></div>
@@ -76,7 +78,7 @@
 
     <div id="serology" class="report-section">
         <h3>Serology & Biochemistry</h3>
-        <div class="grid-table" id="table_serology" style="grid-template-columns: 2fr 2fr;">
+        <div class="grid-table urine-serology-grid">
             <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
             <div class="grid-row"><div class="grid-item">S. Typhi O</div><div class="grid-item"><input type="text"></div></div>
             <div class="grid-row"><div class="grid-item">S. Typhi H</div><div class="grid-item"><input type="text"></div></div>
@@ -91,7 +93,7 @@
 
     <script>
         function toggleSection(id) { document.getElementById(id).classList.toggle('hidden'); }
-        
+
         function printReport() {
             document.querySelectorAll('.grid-row').forEach(row => {
                 let input = row.querySelector('input');
