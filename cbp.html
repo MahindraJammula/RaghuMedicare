@@ -6,15 +6,23 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .report-section { margin-bottom: 25px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
-        input[type="text"] { width: 90%; padding: 6px; border: 1px solid #999; border-radius: 4px; font-size: 14px; }
+        
+        /* Grid Layout */
+        .grid-table { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border: 1px solid #ccc; margin-top: 10px; }
+        .grid-header { display: contents; font-weight: bold; background: #f4f4f4; }
+        .grid-row { display: contents; }
+        .grid-item { padding: 8px; border-bottom: 1px solid #eee; border-right: 1px solid #eee; }
+        
+        input[type="text"] { width: 85%; padding: 4px; border: 1px solid #999; border-radius: 4px; }
+        
+        .hidden { display: none !important; }
+        .row-empty { display: none !important; }
+
         @media print {
             .no-print { display: none !important; }
-            input[type="text"] { border: none !important; background: transparent; font-weight: bold; padding: 0; }
-            table, th, td { border: 1px solid #000 !important; }
+            input[type="text"] { border: none !important; background: transparent !important; font-weight: bold; padding: 0; }
+            .grid-table { border: 1px solid #000 !important; }
         }
-        .hidden { display: none; }
         button { margin-bottom: 5px; cursor: pointer; padding: 5px 8px; margin-right: 5px; font-size: 11px; }
     </style>
 </head>
@@ -22,8 +30,7 @@
 
     <div class="no-print">
         <button onclick="window.location.href='index.html'">Back to Home</button>
-        <button onclick="window.print()">Print Report</button>
-        <button onclick="exportToExcel()">Export to Excel</button>
+        <button onclick="printReport()">Print Report</button>
         <hr>
         <button onclick="toggleSection('hematology')">Toggle Hematology</button>
         <button onclick="toggleSection('urine')">Toggle Urine</button>
@@ -32,79 +39,67 @@
 
     <div id="hematology" class="report-section">
         <h3>Hematology</h3>
-        <div class="no-print">
-            <strong>Hide Columns:</strong>
-            <button onclick="toggleSingleCol('table_hematology', 0)">Test Name</button>
-            <button onclick="toggleSingleCol('table_hematology', 1)">Results</button>
-            <button onclick="toggleSingleCol('table_hematology', 2)">Reference</button>
-            <button onclick="toggleSingleCol('table_hematology', 3)">Unit</button>
+        <div class="grid-table" id="table_hematology">
+            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div><div class="grid-item">Ref Range</div><div class="grid-item">Unit</div></div>
+            <div class="grid-row"><div class="grid-item">Hemoglobin</div><div class="grid-item"><input type="text"></div><div class="grid-item">11.5–17.3</div><div class="grid-item">g/dl</div></div>
+            <div class="grid-row"><div class="grid-item">T.W.B.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">5000–11000</div><div class="grid-item">-</div></div>
+            <div class="grid-row"><div class="grid-item">D.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">45–70%</div><div class="grid-item">%</div></div>
+            <div class="grid-row"><div class="grid-item">Lymphocytes</div><div class="grid-item"><input type="text"></div><div class="grid-item">20–40%</div><div class="grid-item">%</div></div>
+            <div class="grid-row"><div class="grid-item">Eosinophils</div><div class="grid-item"><input type="text"></div><div class="grid-item">0–6%</div><div class="grid-item">%</div></div>
+            <div class="grid-row"><div class="grid-item">Monocytes</div><div class="grid-item"><input type="text"></div><div class="grid-item">0–4%</div><div class="grid-item">%</div></div>
+            <div class="grid-row"><div class="grid-item">H.C.T</div><div class="grid-item"><input type="text"></div><div class="grid-item">34–54</div><div class="grid-item">-</div></div>
+            <div class="grid-row"><div class="grid-item">M.C.V</div><div class="grid-item"><input type="text"></div><div class="grid-item">84–98</div><div class="grid-item">fl</div></div>
+            <div class="grid-row"><div class="grid-item">M.C.H</div><div class="grid-item"><input type="text"></div><div class="grid-item">27</div><div class="grid-item">pg</div></div>
+            <div class="grid-row"><div class="grid-item">M.C.H.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">31.7–34.2</div><div class="grid-item">g/dl</div></div>
+            <div class="grid-row"><div class="grid-item">T.R.B.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">3.7–5.7</div><div class="grid-item">mill/Cumm</div></div>
+            <div class="grid-row"><div class="grid-item">Platelet Count</div><div class="grid-item"><input type="text"></div><div class="grid-item">1.5–3.4</div><div class="grid-item">lakh/Cumm</div></div>
+            <div class="grid-row"><div class="grid-item">A.E.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">40–440</div><div class="grid-item">Cells/Cumm</div></div>
+            <div class="grid-row"><div class="grid-item">E.S.R</div><div class="grid-item"><input type="text"></div><div class="grid-item">Up to 10</div><div class="grid-item">mm</div></div>
         </div>
-        <table id="table_hematology">
-            <thead><tr><th>Test Name</th><th>Results</th><th>Reference Range</th><th>Unit</th></tr></thead>
-            <tbody>
-                <tr><td>Hemoglobin</td><td><input type="text"></td><td>11.5–17.3</td><td>g/dl</td></tr>
-                <tr><td>T.W.B.C</td><td><input type="text"></td><td>5000–11000</td><td>-</td></tr>
-                <tr><td>D.C</td><td><input type="text"></td><td>45–70%</td><td>%</td></tr>
-                <tr><td>Lymphocytes</td><td><input type="text"></td><td>20–40%</td><td>%</td></tr>
-                <tr><td>Eosinophils</td><td><input type="text"></td><td>0–6%</td><td>%</td></tr>
-                <tr><td>Monocytes</td><td><input type="text"></td><td>0–4%</td><td>%</td></tr>
-                <tr><td>H.C.T</td><td><input type="text"></td><td>34–54</td><td>-</td></tr>
-                <tr><td>M.C.V</td><td><input type="text"></td><td>84–98</td><td>fl</td></tr>
-                <tr><td>M.C.H</td><td><input type="text"></td><td>27</td><td>pg</td></tr>
-                <tr><td>M.C.H.C</td><td><input type="text"></td><td>31.7–34.2</td><td>g/dl</td></tr>
-                <tr><td>T.R.B.C</td><td><input type="text"></td><td>3.7–5.7</td><td>mill/Cumm</td></tr>
-                <tr><td>Platelet Count</td><td><input type="text"></td><td>1.5–3.4</td><td>lakh/Cumm</td></tr>
-                <tr><td>A.E.C</td><td><input type="text"></td><td>40–440</td><td>Cells/Cumm</td></tr>
-                <tr><td>E.S.R</td><td><input type="text"></td><td>Up to 10</td><td>mm</td></tr>
-            </tbody>
-        </table>
     </div>
 
     <div id="urine" class="report-section">
         <h3>Urine Analysis</h3>
-        <table id="table_urine">
-            <thead><tr><th>Test Name</th><th>Results</th></tr></thead>
-            <tbody>
-                <tr><td>Sugar</td><td><input type="text"></td></tr>
-                <tr><td>Albumin</td><td><input type="text"></td></tr>
-                <tr><td>Bile Salts</td><td><input type="text"></td></tr>
-                <tr><td>Bile Pigments</td><td><input type="text"></td></tr>
-                <tr><td>Acetone</td><td><input type="text"></td></tr>
-                <tr><td>R.B.C</td><td><input type="text"></td></tr>
-                <tr><td>Pus Cells</td><td><input type="text"></td></tr>
-                <tr><td>Epithelial Cells</td><td><input type="text"></td></tr>
-                <tr><td>Casts / Crystals</td><td><input type="text"></td></tr>
-            </tbody>
-        </table>
+        <div class="grid-table" id="table_urine" style="grid-template-columns: 2fr 2fr;">
+            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
+            <div class="grid-row"><div class="grid-item">Sugar</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Albumin</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Bile Salts</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Bile Pigments</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Acetone</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">R.B.C</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Pus Cells</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Epithelial Cells</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Casts / Crystals</div><div class="grid-item"><input type="text"></div></div>
+        </div>
     </div>
 
     <div id="serology" class="report-section">
         <h3>Serology & Biochemistry</h3>
-        <table id="table_serology">
-            <thead><tr><th>Test Name</th><th>Results</th></tr></thead>
-            <tbody>
-                <tr><td>S. Typhi O</td><td><input type="text"></td></tr>
-                <tr><td>S. Typhi H</td><td><input type="text"></td></tr>
-                <tr><td>S. Para Typhi AH</td><td><input type="text"></td></tr>
-                <tr><td>S. Para Typhi BH</td><td><input type="text"></td></tr>
-                <tr><td>MP Rapid Test</td><td><input type="text"></td></tr>
-                <tr><td>Random Blood Glucose</td><td><input type="text"></td></tr>
-                <tr><td>Serum Creatinine</td><td><input type="text"></td></tr>
-                <tr><td>C-Reactive Protein</td><td><input type="text"></td></tr>
-            </tbody>
-        </table>
+        <div class="grid-table" id="table_serology" style="grid-template-columns: 2fr 2fr;">
+            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
+            <div class="grid-row"><div class="grid-item">S. Typhi O</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">S. Typhi H</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">S. Para Typhi AH</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">S. Para Typhi BH</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">MP Rapid Test</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Random Blood Glucose</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">Serum Creatinine</div><div class="grid-item"><input type="text"></div></div>
+            <div class="grid-row"><div class="grid-item">C-Reactive Protein</div><div class="grid-item"><input type="text"></div></div>
+        </div>
     </div>
 
     <script>
         function toggleSection(id) { document.getElementById(id).classList.toggle('hidden'); }
-        function toggleSingleCol(tableId, colIndex) {
-            let table = document.getElementById(tableId);
-            for (let row of table.rows) {
-                let cell = row.cells[colIndex];
-                if (cell) cell.classList.toggle('hidden');
-            }
+        
+        function printReport() {
+            document.querySelectorAll('.grid-row').forEach(row => {
+                let input = row.querySelector('input');
+                if (input && !input.value.trim()) { row.classList.add('row-empty'); }
+            });
+            window.print();
+            document.querySelectorAll('.row-empty').forEach(r => r.classList.remove('row-empty'));
         }
-        function exportToExcel() { alert("Exporting to Excel..."); }
     </script>
 </body>
 </html>
