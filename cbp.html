@@ -9,7 +9,6 @@
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { padding: 8px; text-align: left; }
         
-        /* Text box styles */
         input[type="text"] {
             width: 90%;
             padding: 6px;
@@ -18,7 +17,7 @@
             font-size: 14px;
         }
 
-        /* Print settings - No borders or lines in print, buttons hidden */
+        /* ప్రింట్ లో బటన్లు మరియు లైన్లు రాకుండా */
         @media print {
             .no-print { display: none !important; }
             input[type="text"] {
@@ -48,7 +47,7 @@
 
     <!-- Hematology Section -->
     <div id="hematology" class="report-section">
-        <h3>Hematology</h3>
+        <h3>Hematology <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_hematology')">Toggle Columns</button></h3>
         <table id="table_hematology">
             <thead>
                 <tr>
@@ -69,7 +68,7 @@
 
     <!-- Biochemistry Section -->
     <div id="biochemistry" class="report-section">
-        <h3>Biochemistry</h3>
+        <h3>Biochemistry <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_biochemistry')">Toggle Columns</button></h3>
         <table id="table_biochemistry">
             <thead>
                 <tr>
@@ -90,7 +89,7 @@
 
     <!-- Serology Section -->
     <div id="serology" class="report-section">
-        <h3>Serology</h3>
+        <h3>Serology <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_serology')">Toggle Columns</button></h3>
         <table id="table_serology">
             <thead>
                 <tr>
@@ -110,14 +109,24 @@
 
     <script>
         function toggleSection(id) {
-            var element = document.getElementById(id);
-            element.classList.toggle('hidden');
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        function toggleCols(tableId) {
+            let table = document.getElementById(tableId);
+            let headers = table.querySelectorAll('th');
+            let rows = table.querySelectorAll('tr');
+            
+            headers.forEach(th => th.classList.toggle('hidden'));
+            rows.forEach(tr => {
+                let cells = tr.querySelectorAll('td');
+                cells.forEach(td => td.classList.toggle('hidden'));
+            });
         }
 
         function exportToExcel() {
             let csv = [];
             let tables = document.querySelectorAll("table");
-            
             tables.forEach(table => {
                 let rows = table.querySelectorAll("tr");
                 for (let i = 0; i < rows.length; i++) {
@@ -128,9 +137,8 @@
                     }
                     csv.push(row.join(","));
                 }
-                csv.push(""); // ఖాళీ లైన్
+                csv.push("");
             });
-
             let csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
             let downloadLink = document.createElement("a");
             downloadLink.download = "Lab_Report.csv";
