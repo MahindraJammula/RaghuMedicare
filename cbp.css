@@ -111,7 +111,7 @@ body{
 
     display:grid;
 
-    grid-template-columns:40% 25% 35%;
+    grid-template-columns:55% 20% 25%;
 
     font-weight:bold;
 
@@ -152,7 +152,7 @@ body{
 
     display:grid;
 
-    grid-template-columns:40% 25% 35%;
+    grid-template-columns:55% 20% 25%;
 
     align-items:center;
 
