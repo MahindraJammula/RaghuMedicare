@@ -17,11 +17,21 @@
         button { cursor: pointer; padding: 8px 15px; margin-right: 5px; }
 
         @media print {
-            .no-print { display: none !important; }
-            input[type="text"] { border: none !important; font-weight: bold; }
-            table, th, td { border: none !important; }
-            body { background: white; }
-        }
+    .no-print { display: none !important; }
+    
+    /* ఇక్కడ మార్పు చేయండి */
+    input[type="text"] { 
+        border: none !important; 
+        background: transparent !important; 
+        outline: none !important; 
+        box-shadow: none !important; 
+        padding: 0 !important; 
+    }
+    
+    table, th, td { 
+        border: 1px solid #000 !important; 
+    }
+}
         
         .hidden { display: none; }
     </style>
