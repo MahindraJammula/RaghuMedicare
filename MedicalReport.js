@@ -1,18 +1,17 @@
 class MedicalReport {
+    // Section show/hide
     toggleSection(id) {
         let el = document.getElementById(id);
         el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
     }
 
-    toggleRow(checkbox) {
-        let row = checkbox.parentElement;
-        row.style.display = checkbox.checked ? "grid" : "none";
+    // Row hide/show using ID (This is what you need for the buttons)
+    toggleRow(rowId) {
+        let row = document.getElementById(rowId);
+        if (row) {
+            row.classList.toggle('hidden-row');
+        }
     }
-}
-
-function toggleRow(rowId) {
-    let row = document.getElementById(rowId);
-    row.classList.toggle('hidden-row'); // ఇది కొత్త క్లాస్ ని యాడ్/రిమూవ్ చేస్తుంది
 }
 
 // Create instance
