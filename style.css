@@ -4,48 +4,44 @@
     <meta charset="UTF-8">
     <title>Lab Report</title>
     <style>
-        /* మీ కొత్త స్టైల్స్ */
         body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; }
         .report-container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; }
         
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 10px; text-align: left; border: none !important; } /* బాక్సుల గీతలు రాకుండా */
+        /* టేబుల్ లో ఏ గీతలు లేకుండా */
+        th, td { padding: 10px; text-align: left; border: none !important; }
         
         input[type="text"] { width: 90%; padding: 6px; border: none; border-bottom: 1px solid #ccc; font-size: 14px; background: transparent; }
 
-        .no-print { margin: 20px; }
+        .no-print { margin: 20px; text-align: center; }
         button { cursor: pointer; padding: 8px 15px; margin-right: 5px; }
 
-       @media print {
-    /* బటన్లు, ఇన్పుట్ బాక్స్ అవుట్‌లైన్లు మరియు హెడర్లు కనిపించవు */
-    .no-print, .nav-btn, .navbar, .main-header { 
-        display: none !important; 
-    }
+        @media print {
+            .no-print { display: none !important; }
+            
+            /* టేబుల్, రోస్ మరియు సెల్స్ చుట్టూ ఉన్న గీతలను పూర్తిగా తీసేయడానికి */
+            table, th, td, .report-container { 
+                border: none !important; 
+                box-shadow: none !important; 
+                outline: none !important;
+                background: transparent !important;
+            }
 
-    /* టేబుల్, రోస్ మరియు సెల్స్ చుట్టూ ఉన్న గీతలను పూర్తిగా తీసేయడానికి */
-    table, th, td, .row, .section, .report-container { 
-        border: none !important; 
-        box-shadow: none !important; 
-        outline: none !important;
-    }
-
-    /* ఇన్పుట్ బాక్సుల గీతలు పోవడానికి */
-    input[type="text"] { 
-        border: none !important; 
-        background: transparent !important; 
-        font-weight: bold !important; 
-        padding: 0 !important; 
-    }
-
-    @page { margin: 0.5cm; }
-}
+            input[type="text"] { 
+                border: none !important; 
+                background: transparent !important; 
+                font-weight: bold !important; 
+                padding: 0 !important; 
+            }
+            @page { margin: 0.5cm; }
+        }
         
         .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="no-print" style="text-align: center;">
+    <div class="no-print">
         <button onclick="window.location.href='index.html'">Back to Home</button>
         <button onclick="window.print()">Print Report</button>
         <button onclick="exportToExcel()">Export to Excel</button>
