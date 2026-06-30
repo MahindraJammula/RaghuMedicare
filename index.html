@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <title>Raghu Medicare | Patient Portal</title>
 </head>
 <body>
 
-    <header><h1>RAGHU MEDICARE</h1></header>
+    <header class="main-header">
+        <h1 class="brand-name">RAGHU MEDICARE</h1>
+        <nav class="navbar">
+            <button class="nav-btn" onclick="showSection('home')">Home</button>
+            <button class="nav-btn" onclick="showSection('reports')">Reports</button>
+        </nav>
+    </header>
 
-    <select id="reportSelector" onchange="showReport()">
-        <option value="">-- Select Report --</option>
-        <option value="cbp">CBP Report</option>
-        <option value="dengue">Dengue Report</option>
-        <option value="diabetic">Diabetic Report</option>
-    </select>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Premium Healthcare Services</h2>
+            <p>Your Health, Our Priority. Expert diagnosis and compassionate care.</p>
+        </div>
+        <img src="doctor.jpg" alt="Doctor" class="hero-img">
+    </section>
 
-    <div id="reportContainer"></div>
+    <section id="reports" style="display:none;" class="report-section">
+        <h2>Diagnostic Reports Portal</h2>
+        <div class="report-list">
+            <div class="report-item" onclick="alert('CBP Report Selected')">CBP Report</div>
+            <div class="report-item" onclick="alert('Dengue Report Selected')">Dengue Report</div>
+            <div class="report-item" onclick="alert('LFT Report Selected')">LFT Report</div>
+            <div class="report-item" onclick="alert('Diabetic Report Selected')">Diabetic Report</div>
+            <div class="report-item" onclick="alert('GTT Report Selected')">GTT Report</div>
+        </div>
+    </section>
 
     <script>
-        const reports = {
-            cbp: {
-                title: "CBP Report",
-                columns: ["Hemoglobin", "T.W.B.C", "Platelet Count"]
-            },
-            dengue: {
-                title: "Dengue Report",
-                columns: ["Dengue Ns1 Ag", "IgG", "IgM"]
-            }
-        };
-
-        function showReport() {
-            let val = document.getElementById('reportSelector').value;
-            let container = document.getElementById('reportContainer');
-            if(!val) { container.innerHTML = ""; return; }
-
-            let report = reports[val];
-            let html = `<h2>${report.title}</h2>`;
-            
-            report.columns.forEach(col => {
-                html += `
-                    <div class="col-row" id="row-${col}">
-                        <input type="checkbox" checked onclick="toggleRow('${col}')">
-                        <label>${col}</label>
-                        <input type="text" placeholder="Enter value">
-                    </div>`;
-            });
-            container.innerHTML = html;
-        }
-
-        function toggleRow(id) {
-            let row = document.getElementById('row-' + id);
-            row.style.opacity = (row.style.opacity == "0.3") ? "1" : "0.3";
+        function showSection(id) {
+            document.getElementById('home').style.display = (id === 'home') ? 'flex' : 'none';
+            document.getElementById('reports').style.display = (id === 'reports') ? 'block' : 'none';
         }
     </script>
 </body>
