@@ -2,106 +2,564 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Comprehensive Lab Report</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; margin: 20px; background-color: #f8f9fa; }
-        .report-section { margin-bottom: 25px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
-        /* Grid Layout */
-        .grid-table { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border-top: 1px solid #000; border-left: 1px solid #000; margin-top: 10px; }
-        .urine-serology-grid { grid-template-columns: 2fr 1fr; } /* Urine/Serology కోసం 2 కాలమ్స్ */
-        
-        .grid-header { display: contents; font-weight: bold; background: #e9ecef; }
-        .grid-row { display: contents; }
-        .grid-item { padding: 10px; border-right: 1px solid #000; border-bottom: 1px solid #000; }
-        
-        input[type="text"] { width: 90%; border: 1px solid #ccc; padding: 5px; border-radius: 3px; }
-        
-        .hidden { display: none !important; }
-        .row-empty { display: none !important; }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Blood Picture (CBP)</title>
 
-        @media print {
-            .no-print { display: none !important; }
-            input[type="text"] { border: none !important; background: transparent !important; font-weight: bold; }
-            .grid-table { border: 1px solid #000; }
-        }
-        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; background: #0056b3; color: white; border: none; border-radius: 4px; }
-    </style>
+    <link rel="stylesheet" href="cbp.css">
 </head>
+
 <body>
 
-    <div class="no-print">
-        <button onclick="window.history.back()">Back to Home</button>
-        <button onclick="printReport()">Print Report</button>
-        <hr>
-        <button onclick="toggleSection('hematology')">Toggle Hematology</button>
-        <button onclick="toggleSection('urine')">Toggle Urine</button>
-        <button onclick="toggleSection('serology')">Toggle Serology</button>
+<div class="toolbar no-print">
+
+    <button class="btn" onclick="window.location.href='index.html'">
+        ⬅ Back
+    </button>
+
+    <button class="btn" onclick="printReport()">
+        🖨 Print
+    </button>
+
+    <button class="btn" onclick="toggleSection('hematology')">
+        Toggle CBP
+    </button>
+
+    <button class="btn" onclick="toggleSection('urine')">
+        Toggle Urine
+    </button>
+
+    <button class="btn" onclick="toggleSection('serology')">
+        Toggle Serology
+    </button>
+
+</div>
+
+
+<div class="report-container">
+
+
+
+
+<section id="hematology" class="report-section">
+
+<h2 class="section-title">
+COMPLETE BLOOD PICTURE (CBP)
+</h2>
+
+
+
+<div class="report-header">
+
+<div class="test-col">
+TEST NAME
+</div>
+
+<div class="result-col">
+RESULT
+</div>
+
+<div class="reference-col">
+REFERENCE RANGE
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+Hemoglobin
+</div>
+
+<div class="result-box">
+<input type="text" placeholder="">
+</div>
+
+<div class="reference">
+11.5 – 17.3 g/dl
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+T.W.B.C
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+5000 – 11000 Cells/Cumm
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+D.C
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+45 – 70 %
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+Lymphocytes
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+20 – 40 %
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+Eosinophils
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+0 – 6 %
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+Monocytes
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+0 – 4 %
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+H.C.T
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+34 – 54
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+M.C.V
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+84 – 98 fl
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+M.C.H
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+27 pg
+</div>
+
+</div>
+
+
+
+<div class="report-row">
+
+<div class="test-name">
+M.C.H.C
+</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+<div class="reference">
+31.7 – 34.2 g/dl
+</div>
+
+</div>
+<div class="report-row">
+
+    <div class="test-name">
+        T.R.B.C
     </div>
 
-    <div id="hematology" class="report-section">
-        <h3>Complete Blood Picture (CBP)</h3>
-        <div class="grid-table">
-            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div><div class="grid-item">Ref Range</div><div class="grid-item">Unit</div></div>
-            <div class="grid-row"><div class="grid-item">Hemoglobin</div><div class="grid-item"><input type="text"></div><div class="grid-item">11.5–17.3</div><div class="grid-item">g/dl</div></div>
-            <div class="grid-row"><div class="grid-item">T.W.B.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">5000–11000</div><div class="grid-item">-</div></div>
-            <div class="grid-row"><div class="grid-item">D.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">45–70%</div><div class="grid-item">%</div></div>
-            <div class="grid-row"><div class="grid-item">Lymphocytes</div><div class="grid-item"><input type="text"></div><div class="grid-item">20–40%</div><div class="grid-item">%</div></div>
-            <div class="grid-row"><div class="grid-item">Eosinophils</div><div class="grid-item"><input type="text"></div><div class="grid-item">0–6%</div><div class="grid-item">%</div></div>
-            <div class="grid-row"><div class="grid-item">Monocytes</div><div class="grid-item"><input type="text"></div><div class="grid-item">0–4%</div><div class="grid-item">%</div></div>
-            <div class="grid-row"><div class="grid-item">H.C.T</div><div class="grid-item"><input type="text"></div><div class="grid-item">34–54</div><div class="grid-item">-</div></div>
-            <div class="grid-row"><div class="grid-item">M.C.V</div><div class="grid-item"><input type="text"></div><div class="grid-item">84–98</div><div class="grid-item">fl</div></div>
-            <div class="grid-row"><div class="grid-item">M.C.H</div><div class="grid-item"><input type="text"></div><div class="grid-item">27</div><div class="grid-item">pg</div></div>
-            <div class="grid-row"><div class="grid-item">M.C.H.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">31.7–34.2</div><div class="grid-item">g/dl</div></div>
-            <div class="grid-row"><div class="grid-item">T.R.B.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">3.7–5.7</div><div class="grid-item">mill/Cumm</div></div>
-            <div class="grid-row"><div class="grid-item">Platelet Count</div><div class="grid-item"><input type="text"></div><div class="grid-item">1.5–3.4</div><div class="grid-item">lakh/Cumm</div></div>
-            <div class="grid-row"><div class="grid-item">A.E.C</div><div class="grid-item"><input type="text"></div><div class="grid-item">40–440</div><div class="grid-item">Cells/Cumm</div></div>
-            <div class="grid-row"><div class="grid-item">E.S.R</div><div class="grid-item"><input type="text"></div><div class="grid-item">Up to 10</div><div class="grid-item">mm</div></div>
-        </div>
+    <div class="result-box">
+        <input type="text">
     </div>
 
-    <div id="urine" class="report-section">
-        <h3>Urine Analysis</h3>
-        <div class="grid-table urine-serology-grid">
-            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
-            <div class="grid-row"><div class="grid-item">Sugar</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Albumin</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Bile Salts</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Bile Pigments</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Acetone</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">R.B.C</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Pus Cells</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Epithelial Cells</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Casts / Crystals</div><div class="grid-item"><input type="text"></div></div>
-        </div>
+    <div class="reference">
+        3.7 – 5.7 mill/Cumm
     </div>
 
-    <div id="serology" class="report-section">
-        <h3>Serology & Biochemistry</h3>
-        <div class="grid-table urine-serology-grid">
-            <div class="grid-header"><div class="grid-item">Test Name</div><div class="grid-item">Results</div></div>
-            <div class="grid-row"><div class="grid-item">S. Typhi O</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">S. Typhi H</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">S. Para Typhi AH</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">S. Para Typhi BH</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">MP Rapid Test</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Random Blood Glucose</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">Serum Creatinine</div><div class="grid-item"><input type="text"></div></div>
-            <div class="grid-row"><div class="grid-item">C-Reactive Protein</div><div class="grid-item"><input type="text"></div></div>
-        </div>
+</div>
+
+
+<div class="report-row">
+
+    <div class="test-name">
+        Platelet Count
     </div>
 
-    <script>
-        function toggleSection(id) { document.getElementById(id).classList.toggle('hidden'); }
+    <div class="result-box">
+        <input type="text">
+    </div>
 
-        function printReport() {
-            document.querySelectorAll('.grid-row').forEach(row => {
-                let input = row.querySelector('input');
-                if (input && !input.value.trim()) { row.classList.add('row-empty'); }
-            });
-            window.print();
-            document.querySelectorAll('.row-empty').forEach(r => r.classList.remove('row-empty'));
-        }
-    </script>
+    <div class="reference">
+        1.5 – 3.4 lakh/Cumm
+    </div>
+
+</div>
+
+
+<div class="report-row">
+
+    <div class="test-name">
+        A.E.C
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+    <div class="reference">
+        40 – 440 Cells/Cumm
+    </div>
+
+</div>
+
+
+<div class="report-row">
+
+    <div class="test-name">
+        E.S.R
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+    <div class="reference">
+        Up to 10 mm
+    </div>
+
+</div>
+
+</section>
+
+
+
+<section id="urine" class="report-section">
+
+<h2 class="section-title">
+URINE ANALYSIS
+</h2>
+
+<div class="report-header">
+
+    <div class="test-col">
+        TEST NAME
+    </div>
+
+    <div class="result-col">
+        RESULT
+    </div>
+
+</div>
+
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Sugar</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Albumin</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Bile Salts</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Bile Pigments</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Acetone</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">R.B.C</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Pus Cells</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Epithelial Cells</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+<div class="test-name">Casts / Crystals</div>
+
+<div class="result-box">
+<input type="text">
+</div>
+
+</div>
+
+</section>
+<section id="serology" class="report-section">
+
+<h2 class="section-title">
+SEROLOGY & BIOCHEMISTRY
+</h2>
+
+<div class="report-header">
+
+    <div class="test-col">
+        TEST NAME
+    </div>
+
+    <div class="result-col">
+        RESULT
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        S. Typhi O
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        S. Typhi H
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        S. Para Typhi AH
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        S. Para Typhi BH
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        MP Rapid Test
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        Random Blood Glucose
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        Serum Creatinine
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+
+<div class="report-row two-column">
+
+    <div class="test-name">
+        C-Reactive Protein (CRP)
+    </div>
+
+    <div class="result-box">
+        <input type="text">
+    </div>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="medicalreport.js"></script>
+
 </body>
 </html>
