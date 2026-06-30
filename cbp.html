@@ -16,38 +16,35 @@
         <h2>CBP & Comprehensive Report</h2>
         <button onclick="window.print()" class="no-print nav-btn">🖨️ Print A4</button>
 
-        <!-- Section 1: Hematology -->
+        <!-- Hematology Section -->
         <div class="section">
             <h3 onclick="reportApp.toggleSection('sec1')">1. Hematology Section ▼</h3>
             <div id="sec1">
                 <div class="row header-row no-print"><span></span><strong>Test Name</strong><strong>Result</strong><strong>Ref Range</strong></div>
-                <div class="row"><input type="checkbox" checked onclick="reportApp.toggleRow(this)"><label>Hemoglobin</label><input type="text"><label>11.5–17.3 g/dl</label></div>
-                <div class="row"><input type="checkbox" checked onclick="reportApp.toggleRow(this)"><label>T.W.B.C</label><input type="text"><label>5000–11000</label></div>
-                <!-- Migatha Hematology rows ki kuda ilage 'onclick="reportApp.toggleRow(this)"' add cheyi -->
+                <div class="row">
+                    <input type="checkbox" checked onclick="reportApp.toggleRow(this)">
+                    <label>Hemoglobin</label>
+                    <input type="text">
+                    <label>11.5–17.3 g/dl</label>
+                </div>
+                <!-- మిగతా రోస్ కి కూడా ఇలాగే రాసుకో -->
             </div>
         </div>
 
-        <!-- Section 2: Widal -->
+        <!-- Widal & Serology Section -->
         <div class="section">
             <h3 onclick="reportApp.toggleSection('sec2')">2. Widal & Serology ▼</h3>
             <div id="sec2">
-                <div class="row"><input type="checkbox" checked onclick="reportApp.toggleRow(this)"><label>S. Typhi O</label><input type="text"></div>
-                <!-- Migatha rows ki kuda ilage cheyi -->
+                <div class="row">
+                    <input type="checkbox" checked onclick="reportApp.toggleRow(this)">
+                    <label>S. Typhi O</label>
+                    <input type="text">
+                    <label></label>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        class MedicalReport {
-            toggleSection(id) {
-                let el = document.getElementById(id);
-                el.style.display = (el.style.display === "none") ? "block" : "none";
-            }
-            toggleRow(cb) {
-                cb.parentElement.style.display = cb.checked ? "grid" : "none";
-            }
-        }
-        const reportApp = new MedicalReport();
-    </script>
+    <script src="MedicalReport.js"></script>
 </body>
 </html>
