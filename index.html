@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Raghu Medicare | Premium Healthcare</title>
+    <title>Raghu Medicare | Patient Portal</title>
 </head>
 <body>
 
@@ -17,17 +18,27 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h2>Excellence in Medical Care</h2>
-            <p>Your health is our priority. Expert diagnosis and compassionate care.</p>
+            <h2>Premium Healthcare Services</h2>
+            [span_3](start_span)[span_4](start_span)<p>Providing expert diagnostics and compassionate care[span_3](end_span)[span_4](end_span).</p>
         </div>
-        <img src="https://images.unsplash.com/photo-1579684385127-1ecd15d5688d?auto=format&fit=crop&q=80&w=1200" alt="Doctor examining patient" class="hero-img">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ecd15d5688d?auto=format&fit=crop&q=80&w=800" alt="Doctor" class="hero-img">
     </section>
 
     <section id="reports" style="display:none;" class="report-section">
-        <h2>Diagnostic Reports</h2>
-        <div class="print-labels">
-            <div class="data-row"><span>Hemoglobin</span><span>7.0 g/dl</span></div>
-            <div class="data-row"><span>Creatinine</span><span>1.2 mg/dl</span></div>
+        <h2>Medical Diagnostic Reports</h2>
+        <div class="toolbar no-print">
+            <button onclick="window.print()">🖨️ Print Report</button>
+            <button onclick="exportToWord()">📝 Export Word</button>
+        </div>
+
+        <div class="report-box">
+            <button class="no-print" onclick="toggleSection('rep1')">Toggle Report (16.08.2023)</button>
+            <div id="rep1" class="print-labels">
+                <h3>CBP Report (16.08.2023)</h3>
+                <div class="data-row"><span>Hemoglobin</span><span>7.0 g/dl</span></div>
+                <div class="data-row"><span>T.W.B.C</span><span>11,090 Cells/Cumm</span></div>
+                <div class="data-row"><span>CRP</span><span>35.6 mg/l</span></div>
+            </div>
         </div>
     </section>
 
@@ -36,8 +47,17 @@
             document.getElementById('home').style.display = (id === 'home') ? 'flex' : 'none';
             document.getElementById('reports').style.display = (id === 'reports') ? 'block' : 'none';
         }
+        function toggleSection(id) {
+            let el = document.getElementById(id);
+            el.style.display = (el.style.display === "none") ? "block" : "none";
+        }
+        function exportToWord() {
+            let content = document.querySelector('.print-labels').innerHTML;
+            let blob = new Blob(['\ufeff', content], { type: 'application/msword' });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url; a.download = 'Report.doc'; a.click();
+        }
     </script>
 </body>
 </html>
-
-
