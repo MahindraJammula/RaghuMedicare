@@ -222,128 +222,83 @@ body{
    PRINT SETTINGS
 ========================== */
 
+@page{
+    size: A4;
+    margin: 5mm;
+}
+
 @media print{
 
-    @page{
-        size:A4;
-        margin:12mm;
-    }
-
+    html,
     body{
-
+        margin:0 !important;
+        padding:0 !important;
         background:#fff;
-
-        padding:0;
-
-        margin:0;
-
         font-size:14px;
-
     }
 
     .no-print,
     .toolbar,
     .btn{
-
         display:none !important;
-
     }
 
     .report-container{
-
         width:100%;
-
         max-width:100%;
-
-        margin:0;
-
-        padding:0;
-
+        margin:0 !important;
+        padding:0 !important;
         border:none;
-
         border-radius:0;
-
         box-shadow:none;
-
     }
 
     .report-section{
-
         page-break-inside:avoid;
-
-        margin-bottom:28px;
-
+        margin-bottom:25px;
     }
 
     .section-title{
-
         font-size:18px;
-
-        margin-bottom:14px;
-
+        margin-bottom:12px;
         border-bottom:2px solid #000;
-
     }
 
     .report-header{
-
         font-size:14px;
-
         font-weight:bold;
-
         border-bottom:1px solid #000;
-
         padding-bottom:6px;
-
         margin-bottom:10px;
-
     }
 
     .report-row{
-
         padding:5px 0;
-
         gap:12px;
-
     }
 
     .reference{
-
         color:#000;
-
     }
 
     .result-box input{
-
         border:none !important;
-
         outline:none !important;
-
         background:transparent !important;
-
         padding:0;
-
         font-weight:bold;
-
         color:#000;
-
         width:100%;
-
     }
 
     input::placeholder{
-
         color:transparent;
-
     }
 
     .hidden,
     .row-empty{
-
         display:none !important;
-
     }
-
 }
 
 
