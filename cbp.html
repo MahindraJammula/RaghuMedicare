@@ -2,47 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>CBP Diagnostic Report</title>
+    <title>Comprehensive CBP Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; line-height: 1.25; }
+        .report-section { margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; text-align: left; }
+        
+        /* ప్రింట్ సెట్టింగ్స్ - లైన్లు రాకుండా */
+        @media print {
+            table, th, td { border: none !important; }
+            .no-print { display: none !important; }
+        }
+        
+        .hidden { display: none; }
+        button { margin-bottom: 5px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <h1 class="brand-name">RAGHU MEDICARE</h1>
-        <nav class="navbar"><a href="index.html" class="nav-btn">Back to Home</a></nav>
-    </header>
 
-    <div class="report-container">
-        <h2>CBP & Comprehensive Report</h2>
-        <button onclick="window.print()" class="no-print nav-btn">🖨️ Print A4</button>
-
-        <div class="section">
-            <h3 onclick="reportApp.toggleSection('sec1')">1. Hematology Section ▼</h3>
-            <div id="sec1">
-                <div class="row header-row no-print"><span></span><strong>Test Name</strong><strong>Result</strong><strong>Ref Range</strong></div>
-                <div class="row">
-                    <input type="checkbox" checked onclick="reportApp.toggleRow(this)">
-                    <label>Hemoglobin</label>
-                    <input type="text">
-                    <label>11.5–17.3 g/dl</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h3 onclick="reportApp.toggleSection('sec2')">2. Widal & Serology ▼</h3>
-            <div id="sec2">
-                <div class="row header-row no-print"><span></span><strong>Test Name</strong><strong>Result</strong><strong>Ref Range</strong></div>
-                <div class="row">
-                    <input type="checkbox" checked onclick="reportApp.toggleRow(this)">
-                    <label>S. Typhi O</label>
-                    <input type="text">
-                    <label>Negative</label>
-                </div>
-            </div>
-        </div>
+    <!-- Toggle Buttons -->
+    <div class="no-print">
+        <button onclick="toggleSection('hematology')">Toggle Hematology</button>
+        <button onclick="toggleSection('biochemistry')">Toggle Biochemistry</button>
+        <button onclick="toggleSection('serology')">Toggle Serology</button>
     </div>
 
-    <script src="MedicalReport.js"></script>
+    <!-- Hematology Section -->
+    <div id="hematology" class="report-section">
+        <h3>Hematology</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Test Name</strong></th>
+                    <th><strong>Results</strong></th>
+                    <th><strong>Reference Range</strong></th>
+                    <th><strong>Unit</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Hemoglobin</td><td>13.5</td><td>12.0 - 16.0</td><td>g/dL</td></tr>
+                <tr><td>RBC Count</td><td>4.5</td><td>4.0 - 5.5</td><td>mill/cumm</td></tr>
+                <tr><td>WBC Count</td><td>7500</td><td>4000 - 11000</td><td>cells/cumm</td></tr>
+                <tr><td>Platelets</td><td>2.5</td><td>1.5 - 4.5</td><td>Lakhs/cumm</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Biochemistry Section -->
+    <div id="biochemistry" class="report-section">
+        <h3>Biochemistry</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Test Name</strong></th>
+                    <th><strong>Results</strong></th>
+                    <th><strong>Reference Range</strong></th>
+                    <th><strong>Unit</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Blood Sugar (F)</td><td>95</td><td>70 - 110</td><td>mg/dL</td></tr>
+                <tr><td>Creatinine</td><td>0.9</td><td>0.6 - 1.2</td><td>mg/dL</td></tr>
+                <tr><td>Urea</td><td>25</td><td>15 - 45</td><td>mg/dL</td></tr>
+                <tr><td>SGPT</td><td>22</td><td>< 40</td><td>U/L</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Serology Section -->
+    <div id="serology" class="report-section">
+        <h3>Serology</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Test Name</strong></th>
+                    <th><strong>Results</strong></th>
+                    <th><strong>Reference Range</strong></th>
+                    <th><strong>Unit</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>CRP</td><td>2.1</td><td>< 6.0</td><td>mg/L</td></tr>
+                <tr><td>RA Factor</td><td>Negative</td><td>Negative</td><td>-</td></tr>
+                <tr><td>Widal Test</td><td>Negative</td><td>Negative</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            var element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
