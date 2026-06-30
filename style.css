@@ -13,3 +13,16 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
 .report-list { display: grid; gap: 15px; max-width: 400px; margin: 0 auto; }
 .report-item { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid #0056b3; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
 .report-item:hover { background: #eef6ff; transform: scale(1.02); }
+.report-container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; }
+.section { border: 1px solid #ddd; margin-bottom: 15px; padding: 15px; border-radius: 10px; cursor: pointer; }
+.row { display: flex; align-items: center; gap: 10px; padding: 6px; border-bottom: 1px solid #eee; }
+.row label:nth-child(2) { flex: 1.5; font-weight: bold; }
+.row input[type="text"] { flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
+.row label:last-child { flex: 1; color: #666; font-size: 0.85em; }
+
+@media print {
+    .no-print, .nav-btn, .navbar, .main-header, input[type="checkbox"], input[type="text"] { display: none !important; }
+    .report-container { box-shadow: none; width: 100%; border: none; }
+    .row { border-bottom: 1px solid #000; justify-content: space-between; }
+    .section { border: none !important; }
+}
