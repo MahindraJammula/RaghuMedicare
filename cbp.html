@@ -16,7 +16,6 @@
         <h2>CBP & Comprehensive Report</h2>
         <button onclick="window.print()" class="no-print nav-btn">🖨️ Print A4</button>
 
-        <!-- Hematology Section -->
         <div class="section">
             <h3 onclick="reportApp.toggleSection('sec1')">1. Hematology Section ▼</h3>
             <div id="sec1">
@@ -27,19 +26,18 @@
                     <input type="text">
                     <label>11.5–17.3 g/dl</label>
                 </div>
-                <!-- మిగతా రోస్ కి కూడా ఇలాగే రాసుకో -->
             </div>
         </div>
 
-        <!-- Widal & Serology Section -->
         <div class="section">
             <h3 onclick="reportApp.toggleSection('sec2')">2. Widal & Serology ▼</h3>
             <div id="sec2">
+                <div class="row header-row no-print"><span></span><strong>Test Name</strong><strong>Result</strong><strong>Ref Range</strong></div>
                 <div class="row">
                     <input type="checkbox" checked onclick="reportApp.toggleRow(this)">
                     <label>S. Typhi O</label>
                     <input type="text">
-                    <label></label>
+                    <label>Negative</label>
                 </div>
             </div>
         </div>
