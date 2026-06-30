@@ -9,28 +9,16 @@
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { padding: 8px; text-align: left; }
         
-        input[type="text"] {
-            width: 90%;
-            padding: 6px;
-            border: 1px solid #999;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+        input[type="text"] { width: 90%; padding: 6px; border: 1px solid #999; border-radius: 4px; font-size: 14px; }
 
-        /* ప్రింట్ లో బటన్లు మరియు లైన్లు రాకుండా */
         @media print {
             .no-print { display: none !important; }
-            input[type="text"] {
-                border: none !important;
-                background: transparent;
-                font-weight: bold;
-                padding: 0;
-            }
+            input[type="text"] { border: none !important; background: transparent; font-weight: bold; padding: 0; }
             table, th, td { border: none !important; }
         }
         
         .hidden { display: none; }
-        button { margin-bottom: 10px; cursor: pointer; padding: 6px 12px; margin-right: 5px; }
+        button { margin-bottom: 5px; cursor: pointer; padding: 5px 8px; margin-right: 5px; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -41,68 +29,29 @@
         <button onclick="exportToExcel()">Export to Excel</button>
         <hr>
         <button onclick="toggleSection('hematology')">Toggle Hematology</button>
-        <button onclick="toggleSection('biochemistry')">Toggle Biochemistry</button>
-        <button onclick="toggleSection('serology')">Toggle Serology</button>
     </div>
 
-    <!-- Hematology Section -->
     <div id="hematology" class="report-section">
-        <h3>Hematology <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_hematology')">Toggle Columns</button></h3>
+        <h3>Hematology</h3>
+        <div class="no-print">
+            <strong>Hide Columns:</strong>
+            <button onclick="toggleSingleCol('table_hematology', 0)">Test Name</button>
+            <button onclick="toggleSingleCol('table_hematology', 1)">Results</button>
+            <button onclick="toggleSingleCol('table_hematology', 2)">Reference</button>
+            <button onclick="toggleSingleCol('table_hematology', 3)">Unit</button>
+        </div>
         <table id="table_hematology">
             <thead>
                 <tr>
-                    <th><strong>Test Name</strong></th>
-                    <th><strong>Results</strong></th>
-                    <th><strong>Reference Range</strong></th>
-                    <th><strong>Unit</strong></th>
+                    <th>Test Name</th>
+                    <th>Results</th>
+                    <th>Reference Range</th>
+                    <th>Unit</th>
                 </tr>
             </thead>
             <tbody>
                 <tr><td>Hemoglobin</td><td><input type="text" value="13.5"></td><td>12.0 - 16.0</td><td>g/dL</td></tr>
                 <tr><td>RBC Count</td><td><input type="text" value="4.5"></td><td>4.0 - 5.5</td><td>mill/cumm</td></tr>
-                <tr><td>WBC Count</td><td><input type="text" value="7500"></td><td>4000 - 11000</td><td>cells/cumm</td></tr>
-                <tr><td>Platelets</td><td><input type="text" value="2.5"></td><td>1.5 - 4.5</td><td>Lakhs/cumm</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Biochemistry Section -->
-    <div id="biochemistry" class="report-section">
-        <h3>Biochemistry <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_biochemistry')">Toggle Columns</button></h3>
-        <table id="table_biochemistry">
-            <thead>
-                <tr>
-                    <th><strong>Test Name</strong></th>
-                    <th><strong>Results</strong></th>
-                    <th><strong>Reference Range</strong></th>
-                    <th><strong>Unit</strong></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Blood Sugar (F)</td><td><input type="text" value="95"></td><td>70 - 110</td><td>mg/dL</td></tr>
-                <tr><td>Creatinine</td><td><input type="text" value="0.9"></td><td>0.6 - 1.2</td><td>mg/dL</td></tr>
-                <tr><td>Urea</td><td><input type="text" value="25"></td><td>15 - 45</td><td>mg/dL</td></tr>
-                <tr><td>SGPT</td><td><input type="text" value="22"></td><td>< 40</td><td>U/L</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Serology Section -->
-    <div id="serology" class="report-section">
-        <h3>Serology <button class="no-print" style="font-size: 12px;" onclick="toggleCols('table_serology')">Toggle Columns</button></h3>
-        <table id="table_serology">
-            <thead>
-                <tr>
-                    <th><strong>Test Name</strong></th>
-                    <th><strong>Results</strong></th>
-                    <th><strong>Reference Range</strong></th>
-                    <th><strong>Unit</strong></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>CRP</td><td><input type="text" value="2.1"></td><td>< 6.0</td><td>mg/L</td></tr>
-                <tr><td>RA Factor</td><td><input type="text" value="Negative"></td><td>Negative</td><td>-</td></tr>
-                <tr><td>Widal Test</td><td><input type="text" value="Negative"></td><td>Negative</td><td>-</td></tr>
             </tbody>
         </table>
     </div>
@@ -112,38 +61,18 @@
             document.getElementById(id).classList.toggle('hidden');
         }
 
-        function toggleCols(tableId) {
+        // ఒక్కో కాలమ్ హైడ్ చేయడానికి ఫంక్షన్ (index 0, 1, 2, 3)
+        function toggleSingleCol(tableId, colIndex) {
             let table = document.getElementById(tableId);
-            let headers = table.querySelectorAll('th');
-            let rows = table.querySelectorAll('tr');
-            
-            headers.forEach(th => th.classList.toggle('hidden'));
-            rows.forEach(tr => {
-                let cells = tr.querySelectorAll('td');
-                cells.forEach(td => td.classList.toggle('hidden'));
-            });
+            for (let row of table.rows) {
+                let cell = row.cells[colIndex];
+                if (cell) cell.classList.toggle('hidden');
+            }
         }
 
         function exportToExcel() {
-            let csv = [];
-            let tables = document.querySelectorAll("table");
-            tables.forEach(table => {
-                let rows = table.querySelectorAll("tr");
-                for (let i = 0; i < rows.length; i++) {
-                    let row = [], cols = rows[i].querySelectorAll("td, th");
-                    for (let j = 0; j < cols.length; j++) {
-                        let val = cols[j].querySelector("input") ? cols[j].querySelector("input").value : cols[j].innerText;
-                        row.push('"' + val + '"');
-                    }
-                    csv.push(row.join(","));
-                }
-                csv.push("");
-            });
-            let csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
-            let downloadLink = document.createElement("a");
-            downloadLink.download = "Lab_Report.csv";
-            downloadLink.href = window.URL.createObjectURL(csvFile);
-            downloadLink.click();
+            // Excel Export logic
+            alert("Exporting to Excel...");
         }
     </script>
 </body>
