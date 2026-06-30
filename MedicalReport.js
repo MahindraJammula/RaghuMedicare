@@ -1,5 +1,9 @@
 class MedicalReport {
 
+    constructor() {
+        this.hiddenSections = [];
+    }
+
     toggleSection(id) {
 
         const section = document.getElementById(id);
@@ -12,7 +16,15 @@ class MedicalReport {
 
     preparePrint() {
 
+        this.hiddenSections = [];
+
         document.querySelectorAll(".report-section").forEach(section => {
+
+            // Already manually hidden section
+            if (section.classList.contains("hidden")) {
+                this.hiddenSections.push(section.id);
+                return;
+            }
 
             let visibleRows = 0;
 
@@ -39,7 +51,7 @@ class MedicalReport {
 
             if (visibleRows === 0) {
 
-                section.classList.add("hidden");
+                section.classList.add("row-empty-section");
 
             }
 
@@ -50,15 +62,11 @@ class MedicalReport {
     restorePrint() {
 
         document.querySelectorAll(".row-empty").forEach(row => {
-
             row.classList.remove("row-empty");
-
         });
 
-        document.querySelectorAll(".report-section").forEach(section => {
-
-            section.classList.remove("hidden");
-
+        document.querySelectorAll(".row-empty-section").forEach(section => {
+            section.classList.remove("row-empty-section");
         });
 
     }
@@ -71,9 +79,7 @@ class MedicalReport {
 
             window.print();
 
-            this.restorePrint();
-
-        }, 100);
+        },100);
 
     }
 
