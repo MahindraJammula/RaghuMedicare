@@ -1,28 +1,32 @@
-body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; }
+/* Table Layout for CBP Report Sections */
+.row { 
+    display: grid !important; 
+    grid-template-columns: 30px 2fr 1fr 1fr; /* Checkbox, Name, Result, Range */
+    align-items: center; 
+    gap: 10px; 
+    padding: 8px; 
+    border-bottom: 1px solid #eee; 
+}
 
-.main-header { background: linear-gradient(135deg, #003366, #0056b3); color: white; padding: 30px; text-align: center; }
-.brand-name { font-size: 2.5rem; margin-bottom: 20px; }
+/* Ensure header row aligns correctly */
+.header-row { font-weight: bold; background: #f0f0f0; }
 
-.nav-btn { background: #ffffff; color: #003366; border: none; padding: 12px 30px; margin: 5px; cursor: pointer; border-radius: 25px; font-weight: bold; transition: 0.3s; }
-.nav-btn:hover { background: #003366; color: white; border: 1px solid white; }
-
-.hero { display: flex; flex-direction: column; align-items: center; padding: 40px; }
-.hero-img { width: 80%; max-width: 600px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-
-.report-section { padding: 40px; text-align: center; }
-.report-list { display: grid; gap: 15px; max-width: 400px; margin: 0 auto; }
-.report-item { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid #0056b3; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
-.report-item:hover { background: #eef6ff; transform: scale(1.02); }
-.report-container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; }
-.section { border: 1px solid #ddd; margin-bottom: 15px; padding: 15px; border-radius: 10px; cursor: pointer; }
-.row { display: flex; align-items: center; gap: 10px; padding: 6px; border-bottom: 1px solid #eee; }
-.row label:nth-child(2) { flex: 1.5; font-weight: bold; }
-.row input[type="text"] { flex: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px; }
-.row label:last-child { flex: 1; color: #666; font-size: 0.85em; }
-
+/* Print settings to ensure clean report */
 @media print {
-    .no-print, .nav-btn, .navbar, .main-header, input[type="checkbox"], input[type="text"] { display: none !important; }
-    .report-container { box-shadow: none; width: 100%; border: none; }
-    .row { border-bottom: 1px solid #000; justify-content: space-between; }
-    .section { border: none !important; }
+    .no-print, input[type="checkbox"], input[type="text"] { 
+        display: none !important; 
+    }
+    
+    .row { 
+        display: grid !important; 
+        grid-template-columns: 2fr 1fr 1fr; /* Name, Result (blank), Range */
+        border-bottom: 1px solid #000; 
+        padding: 10px 0;
+    }
+    
+    /* Ensure no browser headers/footers */
+    @page { margin: 0.5cm; }
+    
+    .report-container { box-shadow: none; width: 100%; border: none; padding: 0; }
+    .section { border: none !important; margin-bottom: 10px; }
 }
