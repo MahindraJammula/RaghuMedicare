@@ -1,4 +1,4 @@
-/* General Styles */
+/* --- Existing Styles --- */
 body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; }
 
 .main-header { background: linear-gradient(135deg, #003366, #0056b3); color: white; padding: 30px; text-align: center; }
@@ -30,6 +30,7 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
     border-radius: 10px; 
 }
 
+/* --- Improved Grid Layout --- */
 .row { 
     display: grid !important; 
     grid-template-columns: 30px 2fr 1fr 1fr; /* Checkbox, Name, Result, Range */
@@ -44,7 +45,7 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
     background: #f0f0f0; 
 }
 
-/* Row visibility toggles */
+/* --- Added Functionality Classes --- */
 .row-empty { display: none !important; }
 .hidden-section { display: none !important; }
 
@@ -66,7 +67,7 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
     
     .row { 
         display: grid !important; 
-        grid-template-columns: 2fr 1fr 1fr; /* Print లో చెక్‌బాక్స్ అవసరం లేదు కాబట్టి 3 కాలమ్స్ */
+        grid-template-columns: 2fr 1fr 1fr; /* Print లో చెక్‌బాక్స్ పోతుంది */
         border-bottom: 1px solid #000; 
         padding: 10px 0;
     }
