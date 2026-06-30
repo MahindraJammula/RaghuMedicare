@@ -4,36 +4,27 @@
     <meta charset="UTF-8">
     <title>Lab Report</title>
     <style>
+        /* Home page style combination */
         body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; }
-        .report-container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; }
+        .main-header { background: linear-gradient(135deg, #003366, #0056b3); color: white; padding: 20px; text-align: center; }
+        .report-container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        /* టేబుల్ లో ఏ గీతలు లేకుండా */
         th, td { padding: 10px; text-align: left; border: none !important; }
         
         input[type="text"] { width: 90%; padding: 6px; border: none; border-bottom: 1px solid #ccc; font-size: 14px; background: transparent; }
 
         .no-print { margin: 20px; text-align: center; }
-        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; }
+        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; background: #0056b3; color: white; border: none; border-radius: 5px; }
+        button:hover { background: #003366; }
 
+        /* ప్రింట్ లో గీతలు, బ్లూ కలర్స్ రాకుండా */
         @media print {
-            .no-print { display: none !important; }
-            
-            /* టేబుల్, రోస్ మరియు సెల్స్ చుట్టూ ఉన్న గీతలను పూర్తిగా తీసేయడానికి */
-            table, th, td, .report-container { 
-                border: none !important; 
-                box-shadow: none !important; 
-                outline: none !important;
-                background: transparent !important;
-            }
-
-            input[type="text"] { 
-                border: none !important; 
-                background: transparent !important; 
-                font-weight: bold !important; 
-                padding: 0 !important; 
-            }
-            @page { margin: 0.5cm; }
+            .no-print, .main-header { display: none !important; }
+            input[type="text"] { border: none !important; font-weight: bold; }
+            table, th, td { border: none !important; }
+            .report-container { box-shadow: none !important; border-radius: 0 !important; margin: 0; }
+            body { background: white !important; }
         }
         
         .hidden { display: none; }
@@ -41,7 +32,11 @@
 </head>
 <body>
 
-    <div class="no-print">
+    <div class="main-header">
+        <h1>Lab Report Dashboard</h1>
+    </div>
+
+    <div class="no-print" style="text-align: center;">
         <button onclick="window.location.href='index.html'">Back to Home</button>
         <button onclick="window.print()">Print Report</button>
         <button onclick="exportToExcel()">Export to Excel</button>
