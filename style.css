@@ -51,42 +51,48 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
 
 /* Print Settings (Professional Lab Report Style) */
 @media print {
+    /* ఇవన్నీ ప్రింట్ లో కనిపించవు */
     .no-print, input[type="checkbox"], .nav-btn, .navbar, .main-header { 
         display: none !important; 
     }
     
     @page { margin: 1cm; }
     
+    /* టెక్స్ట్ బాక్స్ బార్డర్లు పూర్తిగా తీసేసాను */
     input[type="text"] { 
         border: none !important; 
         background: transparent !important; 
         font-weight: bold; 
         padding: 0;
         width: 100%;
+        color: #000;
     }
     
+    /* ఇక్కడ అసలు బార్డర్లు లేకుండా చేశాను */
     .row { 
         display: grid !important; 
-        grid-template-columns: 2fr 1fr 1fr; /* Print లో చెక్‌బాక్స్ పోతుంది */
-        border-bottom: 1px solid #000; 
-        padding: 10px 0;
+        grid-template-columns: 2fr 1fr 1fr; /* Name, Result, Range */
+        border-bottom: none !important;    /* బార్డర్ లైన్ తీసేసాను */
+        padding: 5px 0;
     }
     
     .report-container { 
         box-shadow: none; 
         width: 100%; 
-        border: none; 
+        border: none !important; /* కంటైనర్ బోర్డర్ తీసేసాను */
         padding: 0; 
     }
     
     .section { 
-        border: none !important; 
-        margin-bottom: 15px; 
+        border: none !important; /* సెక్షన్ బోర్డర్స్ కూడా తీసేసాను */
+        margin-bottom: 10px; 
     }
     
+    /* హెడ్డింగ్స్ కింద లైన్ కూడా కావాలంటే ఉంచుకో, లేదంటే 'none' పెట్టు */
     h3 { 
         cursor: default; 
-        border-bottom: 2px solid #000; 
-        margin-bottom: 10px;
+        border-bottom: none !important; 
+        margin-bottom: 5px;
+        font-size: 16px;
     }
 }
