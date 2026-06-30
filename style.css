@@ -15,9 +15,20 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
 .report-item { background: white; padding: 15px; border-radius: 10px; border-left: 5px solid #0056b3; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; text-decoration: none; color: #333; display: block; }
 .report-item:hover { background: #eef6ff; transform: scale(1.02); }
 
-/* Report Container & Table Layout */
-.report-container { max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; }
-.section { border: 1px solid #ddd; margin-bottom: 15px; padding: 15px; border-radius: 10px; }
+.report-container { 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 20px; 
+    background: white; 
+    border-radius: 15px; 
+}
+
+.section { 
+    border: 1px solid #ddd; 
+    margin-bottom: 15px; 
+    padding: 15px; 
+    border-radius: 10px; 
+}
 
 .row { 
     display: grid !important; 
@@ -27,22 +38,54 @@ body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9
     padding: 8px; 
     border-bottom: 1px solid #eee; 
 }
-.header-row { font-weight: bold; background: #f0f0f0; }
 
-/* Print Settings */
+.header-row { 
+    font-weight: bold; 
+    background: #f0f0f0; 
+}
+
+/* Row visibility toggles */
+.row-empty { display: none !important; }
+.hidden-section { display: none !important; }
+
+/* Print Settings (Professional Lab Report Style) */
 @media print {
-    .no-print, input[type="checkbox"], input[type="text"], .nav-btn, .navbar, .main-header { 
+    .no-print, input[type="checkbox"], .nav-btn, .navbar, .main-header { 
         display: none !important; 
     }
-    @page { margin: 0.5cm; }
+    
+    @page { margin: 1cm; }
+    
+    input[type="text"] { 
+        border: none !important; 
+        background: transparent !important; 
+        font-weight: bold; 
+        padding: 0;
+        width: 100%;
+    }
     
     .row { 
         display: grid !important; 
-        grid-template-columns: 2fr 1fr 1fr; /* Name, Result (blank), Range */
+        grid-template-columns: 2fr 1fr 1fr; /* Print లో చెక్‌బాక్స్ అవసరం లేదు కాబట్టి 3 కాలమ్స్ */
         border-bottom: 1px solid #000; 
         padding: 10px 0;
     }
-    .report-container { box-shadow: none; width: 100%; border: none; padding: 0; }
-    .section { border: none !important; margin-bottom: 10px; }
-    h3 { cursor: default; border-bottom: 1px solid #000; }
+    
+    .report-container { 
+        box-shadow: none; 
+        width: 100%; 
+        border: none; 
+        padding: 0; 
+    }
+    
+    .section { 
+        border: none !important; 
+        margin-bottom: 15px; 
+    }
+    
+    h3 { 
+        cursor: default; 
+        border-bottom: 2px solid #000; 
+        margin-bottom: 10px;
+    }
 }
