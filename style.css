@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Lab Report</title>
     <style>
-        /* Home page style combination */
+        /* మీ పాత స్టైల్స్ (Blue & White Combination) */
         body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; }
         .main-header { background: linear-gradient(135deg, #003366, #0056b3); color: white; padding: 20px; text-align: center; }
         .report-container { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        
+        h3 { color: #003366; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 10px; text-align: left; border: none !important; }
+        th, td { padding: 12px; text-align: left; }
         
+        /* ఇన్పుట్ స్టైల్ */
         input[type="text"] { width: 90%; padding: 6px; border: none; border-bottom: 1px solid #ccc; font-size: 14px; background: transparent; }
 
+        /* బటన్ స్టైల్ */
         .no-print { margin: 20px; text-align: center; }
-        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; background: #0056b3; color: white; border: none; border-radius: 5px; }
+        button { cursor: pointer; padding: 8px 15px; margin-right: 5px; background: #0056b3; color: white; border: none; border-radius: 5px; font-size: 12px; }
         button:hover { background: #003366; }
 
-        /* ప్రింట్ లో గీతలు, బ్లూ కలర్స్ రాకుండా */
+        /* ప్రింట్ సెట్టింగ్స్ - గీతలు రాకుండా */
         @media print {
             .no-print, .main-header { display: none !important; }
-            input[type="text"] { border: none !important; font-weight: bold; }
+            input[type="text"] { border: none !important; font-weight: bold; background: transparent !important; }
             table, th, td { border: none !important; }
             .report-container { box-shadow: none !important; border-radius: 0 !important; margin: 0; }
             body { background: white !important; }
@@ -36,7 +39,7 @@
         <h1>Lab Report Dashboard</h1>
     </div>
 
-    <div class="no-print" style="text-align: center;">
+    <div class="no-print">
         <button onclick="window.location.href='index.html'">Back to Home</button>
         <button onclick="window.print()">Print Report</button>
         <button onclick="exportToExcel()">Export to Excel</button>
@@ -68,10 +71,7 @@
                 if (cell) cell.classList.toggle('hidden');
             }
         }
-
-        function exportToExcel() {
-            alert("Exporting to Excel...");
-        }
+        function exportToExcel() { alert("Exporting..."); }
     </script>
 </body>
 </html>
