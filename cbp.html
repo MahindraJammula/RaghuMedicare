@@ -18,7 +18,7 @@
             font-size: 14px;
         }
 
-        /* Print settings - No borders or lines in print */
+        /* Print settings - No borders or lines in print, buttons hidden */
         @media print {
             .no-print { display: none !important; }
             input[type="text"] {
@@ -31,12 +31,16 @@
         }
         
         .hidden { display: none; }
-        button { margin-bottom: 10px; cursor: pointer; padding: 6px 12px; }
+        button { margin-bottom: 10px; cursor: pointer; padding: 6px 12px; margin-right: 5px; }
     </style>
 </head>
 <body>
 
     <div class="no-print">
+        <button onclick="window.location.href='index.html'">Back to Home</button>
+        <button onclick="window.print()">Print Report</button>
+        <button onclick="exportToExcel()">Export to Excel</button>
+        <hr>
         <button onclick="toggleSection('hematology')">Toggle Hematology</button>
         <button onclick="toggleSection('biochemistry')">Toggle Biochemistry</button>
         <button onclick="toggleSection('serology')">Toggle Serology</button>
@@ -45,7 +49,7 @@
     <!-- Hematology Section -->
     <div id="hematology" class="report-section">
         <h3>Hematology</h3>
-        <table>
+        <table id="table_hematology">
             <thead>
                 <tr>
                     <th><strong>Test Name</strong></th>
@@ -66,7 +70,7 @@
     <!-- Biochemistry Section -->
     <div id="biochemistry" class="report-section">
         <h3>Biochemistry</h3>
-        <table>
+        <table id="table_biochemistry">
             <thead>
                 <tr>
                     <th><strong>Test Name</strong></th>
@@ -87,7 +91,7 @@
     <!-- Serology Section -->
     <div id="serology" class="report-section">
         <h3>Serology</h3>
-        <table>
+        <table id="table_serology">
             <thead>
                 <tr>
                     <th><strong>Test Name</strong></th>
@@ -108,6 +112,30 @@
         function toggleSection(id) {
             var element = document.getElementById(id);
             element.classList.toggle('hidden');
+        }
+
+        function exportToExcel() {
+            let csv = [];
+            let tables = document.querySelectorAll("table");
+            
+            tables.forEach(table => {
+                let rows = table.querySelectorAll("tr");
+                for (let i = 0; i < rows.length; i++) {
+                    let row = [], cols = rows[i].querySelectorAll("td, th");
+                    for (let j = 0; j < cols.length; j++) {
+                        let val = cols[j].querySelector("input") ? cols[j].querySelector("input").value : cols[j].innerText;
+                        row.push('"' + val + '"');
+                    }
+                    csv.push(row.join(","));
+                }
+                csv.push(""); // ఖాళీ లైన్
+            });
+
+            let csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+            let downloadLink = document.createElement("a");
+            downloadLink.download = "Lab_Report.csv";
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.click();
         }
     </script>
 </body>
