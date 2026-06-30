@@ -16,12 +16,29 @@
         .no-print { margin: 20px; }
         button { cursor: pointer; padding: 8px 15px; margin-right: 5px; }
 
-        @media print {
-            .no-print { display: none !important; }
-            input[type="text"] { border: none !important; font-weight: bold; }
-            table, th, td { border: none !important; }
-            body { background: white; }
-        }
+       @media print {
+    /* బటన్లు, ఇన్పుట్ బాక్స్ అవుట్‌లైన్లు మరియు హెడర్లు కనిపించవు */
+    .no-print, .nav-btn, .navbar, .main-header { 
+        display: none !important; 
+    }
+
+    /* టేబుల్, రోస్ మరియు సెల్స్ చుట్టూ ఉన్న గీతలను పూర్తిగా తీసేయడానికి */
+    table, th, td, .row, .section, .report-container { 
+        border: none !important; 
+        box-shadow: none !important; 
+        outline: none !important;
+    }
+
+    /* ఇన్పుట్ బాక్సుల గీతలు పోవడానికి */
+    input[type="text"] { 
+        border: none !important; 
+        background: transparent !important; 
+        font-weight: bold !important; 
+        padding: 0 !important; 
+    }
+
+    @page { margin: 0.5cm; }
+}
         
         .hidden { display: none; }
     </style>
