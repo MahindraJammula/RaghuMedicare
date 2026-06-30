@@ -1,17 +1,17 @@
-* { box-sizing: border-box; }
-body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f8f9fa; color: #333; }
+body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f7f6; }
 
-.main-header { background: #003366; color: white; padding: 30px; text-align: center; }
-.brand-name { margin: 0; font-size: 40px; letter-spacing: 2px; }
-.navbar button { background: #ffffff; color: #003366; border: none; padding: 10px 25px; margin: 10px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+.main-header { background: #003366; color: white; padding: 20px; text-align: center; }
+.navbar button { background: white; color: #003366; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 4px; font-weight: bold; }
 
-.hero { flex-direction: column; align-items: center; padding: 40px; }
-.hero-img { width: 90%; max-width: 800px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+.hero { display: flex; flex-direction: column; align-items: center; padding: 30px; text-align: center; }
+.hero-img { width: 90%; max-width: 600px; border-radius: 15px; margin-top: 20px; }
 
-.report-section { padding: 40px; background: white; margin: 20px auto; max-width: 800px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.data-row { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid #eee; }
+.report-section { padding: 30px; background: white; margin: 20px auto; max-width: 700px; border-radius: 10px; }
+.report-box { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; }
+.data-row { display: flex; justify-content: space-between; padding: 8px; border-bottom: 1px solid #eee; }
 
 @media print {
-    .main-header, .navbar, .hero { display: none; }
-    .report-section { display: block; box-shadow: none; }
+    .no-print { display: none !important; }
+    .main-header, .navbar, .hero { display: none !important; }
+    .report-section { border: none !important; box-shadow: none !important; width: 100%; }
 }
