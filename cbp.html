@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>CBP Report | Raghu Medicare</title>
+    <title>CBP Diagnostic Report</title>
 </head>
 <body>
     <header class="main-header">
@@ -12,31 +13,59 @@
     </header>
 
     <div class="report-container">
-        <h2>CBP Diagnostic Report</h2>
+        <h2>CBP & Comprehensive Report</h2>
         <button onclick="window.print()" class="no-print nav-btn">🖨️ Print A4</button>
 
         <!-- Section 1: Hematology -->
         <div class="section">
-            <h3 onclick="toggle('sec1')">Hematology Section ▼</h3>
+            <h3 onclick="toggle('sec1')">1. Hematology Section ▼</h3>
             <div id="sec1">
-                <div class="row"><input type="checkbox" checked><label>Hemoglobin</label><input type="text"></div>
-                <div class="row"><input type="checkbox" checked><label>T.W.B.C</label><input type="text"></div>
+                <div class="row header-row"><span></span><span>Test Name</span><span>Result</span><span>Ref Range</span></div>
+                <div class="row"><input type="checkbox" checked><label>Hemoglobin</label><input type="text"><label>11.5–17.3 g/dl</label></div>
+                <div class="row"><input type="checkbox" checked><label>T.W.B.C</label><input type="text"><label>5000–11000</label></div>
+                <div class="row"><input type="checkbox" checked><label>D.C</label><input type="text"><label>45–70%</label></div>
+                <div class="row"><input type="checkbox" checked><label>Lymphocytes</label><input type="text"><label>20–40%</label></div>
+                <div class="row"><input type="checkbox" checked><label>Eosinophils</label><input type="text"><label>0–6%</label></div>
+                <div class="row"><input type="checkbox" checked><label>Monocytes</label><input type="text"><label>0–4%</label></div>
+                <div class="row"><input type="checkbox" checked><label>H.C.T</label><input type="text"><label>34–54</label></div>
+                <div class="row"><input type="checkbox" checked><label>M.C.V</label><input type="text"><label>84–98 fl</label></div>
+                <div class="row"><input type="checkbox" checked><label>M.C.H</label><input type="text"><label>27 pg</label></div>
+                <div class="row"><input type="checkbox" checked><label>M.C.H.C</label><input type="text"><label>31.7–34.2 g/dl</label></div>
+                <div class="row"><input type="checkbox" checked><label>T.R.B.C</label><input type="text"><label>3.7–5.7</label></div>
+                <div class="row"><input type="checkbox" checked><label>Platelet Count</label><input type="text"><label>1.5–3.4</label></div>
+                <div class="row"><input type="checkbox" checked><label>A.E.C</label><input type="text"><label>40–440</label></div>
+                <div class="row"><input type="checkbox" checked><label>E.S.R</label><input type="text"><label>Up to 10</label></div>
             </div>
         </div>
 
-        <!-- Section 2: Widal/Serology -->
+        <!-- Section 2: Widal -->
         <div class="section">
-            <h3 onclick="toggle('sec2')">Widal & Serology ▼</h3>
+            <h3 onclick="toggle('sec2')">2. Widal & Serology ▼</h3>
             <div id="sec2">
-                <div class="row"><input type="checkbox" checked><label>S.Typhi 'O'</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>S. Typhi O</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>S. Typhi H</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>S. Para Typhi AH</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>S. Para Typhi BH</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>MP Rapid Test</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Random Blood Glucose</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Serum Creatinine</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>C-Reactive Protein</label><input type="text"></div>
             </div>
         </div>
 
-        <!-- Section 3: Urine Analysis -->
+        <!-- Section 3: Urine -->
         <div class="section">
-            <h3 onclick="toggle('sec3')">Urine Analysis ▼</h3>
+            <h3 onclick="toggle('sec3')">3. Urine Analysis ▼</h3>
             <div id="sec3">
-                <div class="row"><input type="checkbox" checked><label>Specific Gravity</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Sugar</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Albumin</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Bile Salts</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Bile Pigments</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Acetone</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>R.B.C</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Pus Cells</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Epithelial Cells</label><input type="text"></div>
+                <div class="row"><input type="checkbox" checked><label>Casts / Crystals</label><input type="text"></div>
             </div>
         </div>
     </div>
